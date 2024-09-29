@@ -1,16 +1,24 @@
-# clock_with_rive
+# Clock with Rive
+## Test project to learn how to integrete rive with flutter
 
-A new Flutter project.
+### Notes
+- Load asset
+```final file = await RiveFile.asset('assets/clock_clock.riv');```
+- access mainArtBoard 
+```final artboard = file.mainArtboard;```
+- build your controller
+```final controller = StateMachineController.fromArtboard(artboard,'State Machine 1',);```
+- add controller to your artboard
+```artboard.addController(controller!);```
+- if you need to edit in any input in board 
+    - first find this input
+    ```final _amountInputhr = controller.findInput<double>('hr');```
+    - then edit in thier value 
+    ```_amountInputhr?.value = 7;```
+- then pass this art bourd that edit ti rive widget to show
+```setState(() => _riveArtboard = artboard);```
+```Rive(artboard: _riveArtboard!)```
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### App UI
+![full app image](assets/screenUI.png)
